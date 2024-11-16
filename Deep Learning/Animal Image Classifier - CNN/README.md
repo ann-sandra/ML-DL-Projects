@@ -32,19 +32,19 @@ dataset/
 ## **Model Architecture**
 The CNN model consists of the following layers:
 
-1. **Input Image Dimensions:** \( 64 \times 64 \times 3 \) (height, width, RGB channels)
+1. **Input Image Dimensions:** \( 64 x 64 \times 3 \) (height, width, RGB channels)
 2. **Convolutional Layer 1:** 
-   - Filter size: \( 3 \times 3 \), Stride: 1
-   - Output: \( 62 \times 62 \times n \)
+   - Filter size: \( 3 x 3 \), Stride: 1
+   - Output: \( 62 \times 62 x n \)
 3. **Max Pooling 1:** 
-   - Filter size: \( 2 \times 2 \), Stride: 2
-   - Output: \( 31 \times 31 \times n \)
+   - Filter size: \( 2 x 2 \), Stride: 2
+   - Output: \( 31 x 31 \times n \)
 4. **Convolutional Layer 2:** 
-   - Filter size: \( 3 \times 3 \), Stride: 1
-   - Output: \( 29 \times 29 \times m \)
+   - Filter size: \( 3 x 3 \), Stride: 1
+   - Output: \( 29 x 29 x m \)
 5. **Max Pooling 2:** 
-   - Filter size: \( 2 \times 2 \), Stride: 2
-   - Output: \( 14 \times 14 \times m \)
+   - Filter size: \( 2 x 2 \), Stride: 2
+   - Output: \( 14 x 14 x m \)
 6. **Flattening:** Converts the 3D matrix into a 1D vector for the dense layers.
 7. **Fully Connected Layer (ANN):** Dense layer with 128 neurons and ReLU activation.
 8. **Output Layer:** 
