@@ -65,7 +65,7 @@ The **RNN** used in this project has the following architecture:
 ---
 
 ## **Visualisation fo Real and Predicted Google Stock Price**
-
+![Real vs Predicted Stock Price](Real%20vs%20Predicted%20Stock%20Price.png)
 ￼
 
 ---
