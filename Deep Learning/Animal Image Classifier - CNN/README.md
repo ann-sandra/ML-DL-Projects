@@ -62,7 +62,7 @@ The CNN model consists of the following layers:
   - Optimizer: Adam
   - Loss Function: Binary Crossentropy
 - **Data Preprocessing:**
-  - Resizing images to \( 64 \times 64 \)
+  - Resizing images to \( 64 x 64 \)
   - Normalizing pixel values to the range [0, 1]
 
 ---
