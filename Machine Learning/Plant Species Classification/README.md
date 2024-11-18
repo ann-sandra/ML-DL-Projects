@@ -55,7 +55,6 @@ The following steps were performed to prepare the data for training and testing:
   - **Number of Neighbors (k):** 5  
 - **Validation:** K-Fold Cross-Validation with `n=10`  
 - **Accuracy:** 83.3%  
-- **Visualization:** Decision boundary and predictions visualized.
 
 ---
 
@@ -67,8 +66,8 @@ A custom implementation of KNN was developed to better understand its mechanics.
 - **`majority_vote`**: Determines the predicted class based on the majority vote of the neighbors.
 
 - **Validation:** K-Fold Cross-Validation with `n=10`  
-- **Accuracy:** 84.6% (higher than the Scikit-Learn implementation).  
-- **Visualization:** Predictions visualized.
+- **Accuracy:** 84.6% (higher than the Scikit-Learn implementation).
+<img src="KNN Iris.png" alt="KNN" width="500"/>  
 
 ---
 
