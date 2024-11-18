@@ -63,15 +63,15 @@ To prepare the dataset for training and evaluation, the following preprocessing 
 
 ### **2. Decision Tree**
 - **Criteria:** Entropy  
-- **Accuracy:** 90% on the test set.  
-![Decision Tree](images/DT.png)
+- **Accuracy:** 90% on the test set.
+<img src="images/DT.png" alt="Decision Tree" width="500"/>  
 
 ---
 
 ### **3. Naive Bayes**
 - **Algorithm:** Gaussian Naive Bayes.  
-- **Accuracy:** 90% on the test set.  
-![Naive Bayes](images/NB.png)
+- **Accuracy:** 90% on the test set.
+<img src="images/NB.png" alt="Naive Bayes" width="500"/>  
 
 ---
 
@@ -79,15 +79,15 @@ To prepare the dataset for training and evaluation, the following preprocessing 
 - **Configuration:**  
   - **Number of Estimators:** 10  
   - **Criteria:** Entropy  
-- **Accuracy:** 91% on the test set.  
-![Random Forest](images/RF.png)
+- **Accuracy:** 91% on the test set.
+<img src="images/RF.png" alt="Random Forest" width="500"/>    
 
 ---
 
 ### **5. Support Vector Machine (SVM)**
 - **Kernel:** Linear  
-- **Accuracy:** 90% on the test set.  
-![SVM](images/SVM.png)
+- **Accuracy:** 90% on the test set.
+<img src="images/SVM.png" alt="SVM" width="500"/>    
 
 ---
 
@@ -96,8 +96,8 @@ To prepare the dataset for training and evaluation, the following preprocessing 
   - **Number of Neighbors:** 5  
   - **Distance Metric:** Minkowski  
   - **Parameter p:** 2  (Euclidean distance)
-- **Accuracy:** 93% on the test set.  
-![KNN](images/KNN.png)
+- **Accuracy:** 93% on the test set.
+<img src="images/KNN.png" alt="KNN" width="500"/>  
 
 ---
 
