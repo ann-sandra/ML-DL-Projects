@@ -1,6 +1,4 @@
-Here’s a detailed and professional README for your **Ad Response Predictor** project:
 
----
 
 # **Ad Response Predictor**
 
