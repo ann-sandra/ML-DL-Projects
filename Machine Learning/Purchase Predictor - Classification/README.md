@@ -102,7 +102,7 @@ To prepare the dataset for training and evaluation, the following preprocessing 
 ---
 
 ### **Validation**
-The accuracy of the models on the test set is used for validation to prevent overfitting to the training data. Since KNN achieves the highest accuracy on the test set, the KNN model with 5 nearest neighbors is selected as the best-performing model for the current dataset.
+The accuracy of the models on the test set and the visualisation of the split are used for validation to prevent overfitting to the training data. Since KNN achieves the highest accuracy on the test set and also has a clear boundary for the split with a few outliers unlike randomforest and decision trees, the KNN model with 5 nearest neighbors is selected as the best-performing model for the current dataset.
 
 ---
 
