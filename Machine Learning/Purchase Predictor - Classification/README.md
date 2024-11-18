@@ -56,8 +56,8 @@ To prepare the dataset for training and evaluation, the following preprocessing 
 ## **Model Building and Results**
 
 ### **1. Logistic Regression**
-- **Accuracy:** 89% on the test set.  
-![Logistic Regression](images/LR.png =250x250)
+- **Accuracy:** 89% on the test set.
+<img src="images/LR.png" alt="Logistic Regression" width="500"/> 
 
 ---
 
