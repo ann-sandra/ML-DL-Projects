@@ -127,6 +127,6 @@ The accuracy of the models on the test set is used for validation to prevent ove
 
 ## **Future Improvements**
 1. Extend the dataset by including additional features, such as browsing behavior or clickstream data.  
-2. Apply hyperparameter tuning to find the optimal number of neighbors with minimal bias and no overfitting.  
+2. Apply hyperparameter tuning to find the optimal number of neighbors with minimal bias and overfitting.  
 4. Use ensemble methods to combine the strengths of multiple algorithms.
 
