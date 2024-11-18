@@ -57,7 +57,6 @@ To prepare the dataset for training and evaluation, the following preprocessing 
 
 ### **1. Logistic Regression**
 - **Accuracy:** 89% on the test set.  
-- **Visualization:**
 ![Logistic Regression](images/LR.png)
 
 ---
@@ -65,14 +64,14 @@ To prepare the dataset for training and evaluation, the following preprocessing 
 ### **2. Decision Tree**
 - **Criteria:** Entropy  
 - **Accuracy:** 90% on the test set.  
-- **Visualization:** Decision boundary plotted for test data.
+![Decision Tree](images/DT.png)
 
 ---
 
 ### **3. Naive Bayes**
 - **Algorithm:** Gaussian Naive Bayes.  
 - **Accuracy:** 90% on the test set.  
-- **Visualization:** Decision boundary plotted for test data.
+![Naive Bayes](images/NB.png)
 
 ---
 
@@ -81,14 +80,14 @@ To prepare the dataset for training and evaluation, the following preprocessing 
   - **Number of Estimators:** 10  
   - **Criteria:** Entropy  
 - **Accuracy:** 91% on the test set.  
-- **Visualization:** Decision boundary plotted for test data.
+![Random Forest](images/RF.png)
 
 ---
 
 ### **5. Support Vector Machine (SVM)**
 - **Kernel:** Linear  
 - **Accuracy:** 90% on the test set.  
-- **Visualization:** Decision boundary plotted for test data.
+![SVM](images/SVM.png)
 
 ---
 
@@ -98,7 +97,7 @@ To prepare the dataset for training and evaluation, the following preprocessing 
   - **Distance Metric:** Minkowski  
   - **Parameter p:** 2  (Euclidean distance)
 - **Accuracy:** 93% on the test set.  
-- **Visualization:** Decision boundary plotted for test data.
+![KNN](images/KNN.png)
 
 ---
 
