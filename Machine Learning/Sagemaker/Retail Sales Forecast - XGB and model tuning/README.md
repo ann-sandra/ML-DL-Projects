@@ -92,42 +92,32 @@ The dataset consists of three files:
 
 ### **1. XGBoost Regression**  
 
-- **Initial Hyperparameters**:  
-  ```python
-  XGBRegressor(
-      max_depth=5,
-      learning_rate=0.1,
-      n_estimators=100,
-      colsample_bytree=1,
-      reg_alpha=0,
-      reg_lambda=1
-  )
-  ```  
+- **Hyperparameters**:  
+   - **max_depth=5**: Limits tree depth to prevent overfitting while capturing important patterns.  
+   - **learning_rate=0.1**: Controls how much each tree contributes to the final model, balancing speed and generalization.  
+   - **n_estimators=100**: Specifies the number of trees in the model.  
+   - **colsample_bytree=1**: Uses all features for building each tree.  
+   - **reg_alpha=0** and **reg_lambda=1**: Apply regularization to avoid overfitting with moderate L2 regularization and no L1 penalty.  
+
 
 - **Performance**:  
   - RMSE: **9779.869**  
   - R²: **0.819**  
 
 ### **2. XGBoost on SageMaker**  
-
-- **Hyperparameters**:  
-  ```python
-  {
-      "max_depth": 10,
-      "objective": "reg:linear",
-      "colsample_bytree": 0.3,
-      "alpha": 10,
-      "eta": 0.1,
-      "num_round": 100
-  }
-  ```  
-
 - **Performance**:  
   - RMSE: **7492.593**  
   - R²: **0.894**  
 
 ### **3. Hyperparameter Optimization with SageMaker**  
-
+- **SageMaker Optimized Hyperparameters**:
+   - **max_depth=10**: Enables deeper trees to model complex relationships.  
+   - **objective='reg:linear'**: Uses linear regression as the objective function for forecasting.  
+   - **colsample_bytree=0.3**: Randomly selects 30% of features for each tree to reduce overfitting.  
+   - **alpha=10**: Applies strong L1 regularization to improve model sparsity.  
+   - **eta=0.1**: Maintains a low learning rate for smooth convergence.  
+   - **num_round=100**: Trains the model over 100 boosting iterations for optimal accuracy.
+      
 - **Tuned Parameters**:  
   - Optimized for `max_depth`, `learning_rate`, `alpha`, and `colsample_bytree`.  
 
