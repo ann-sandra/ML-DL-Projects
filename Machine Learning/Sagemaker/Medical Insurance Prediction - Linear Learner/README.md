@@ -18,7 +18,10 @@ The aim of the project is to predict the health insurance premium incurred by in
 ### **Dataset**
 - **Source**: [Medical Insurance Dataset](https://www.kaggle.com/mirichoi0218/insurance)  
 - **Structure**: The dataset contains 7 columns:
-  - `age`, `sex`, `bmi`, `children`, `smoker`, `region`, and `charges`.
+- `age`, `sex`, `bmi`, `children`, `smoker`, `region`, and `charges`.
+
+## **Subject Areas**
+`Predictive Modeling`, `AWS Sagemaker`, `Neural Network Optimization,`, `Data Preprocessing`, `Feature Engineering`
 
 ---
 
