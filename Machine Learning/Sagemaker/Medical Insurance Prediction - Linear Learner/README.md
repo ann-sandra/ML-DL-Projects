@@ -20,7 +20,7 @@ The aim of the project is to predict the health insurance premium incurred by in
 - **Structure**: The dataset contains 7 columns:
 - `age`, `sex`, `bmi`, `children`, `smoker`, `region`, and `charges`.
 
-## **Subject Areas**
+### **Subject Areas**
 `Predictive Modeling`, `AWS Sagemaker`, `Neural Network Optimization,`, `Data Preprocessing`, `Feature Engineering`
 
 ---
