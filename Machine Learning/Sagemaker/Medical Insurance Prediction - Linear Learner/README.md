@@ -74,10 +74,9 @@ Data was split into **80% training** and **20% testing**.
 
 1. **Data Preparation**:  
    - Data was converted to **RecordIO format** using AWS SageMaker's utilities.
-   ```python
-  buf = io.BytesIO()  # create an in-memory byte array (buf is a buffer I will be writing to)
-  smac.write_numpy_to_dense_tensor(buf, X_train, y_train.reshape(-1))
-  buf.seek(0)```
+```python 
+your_code = do_some_stuff
+```
 
    - Training and testing datasets were uploaded to **AWS S3** for model training.
 
