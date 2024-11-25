@@ -176,7 +176,7 @@ linear_regressor = linear.deploy(initial_instance_count = 1,
 
 2. **Install required libraries:  **:
    ```bash
-   pip install pandas numpy scikit-learn imbalanced-learn
+   pip install pandas numpy scikit-learn 
 
 ---
 
