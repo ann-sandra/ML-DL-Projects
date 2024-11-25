@@ -75,9 +75,14 @@ Data was split into **80% training** and **20% testing**.
 1. **Data Preparation**:  
    - Data was converted to **RecordIO format** using AWS SageMaker's utilities.
 ```python 
-your_code = do_some_stuff
+buf = io.BytesIO() # create an in-memory byte array 
+smac.write_numpy_to_dense_tensor(buf, X_train, y_train.reshape(-1))
+buf.seek(0)
 ```
-
+   - The linear learner image URI is used to build the model.
+```python 
+container = get_image_uri(boto3.Session().region_name, 'linear-learner')
+```
    - Training and testing datasets were uploaded to **AWS S3** for model training.
 
 2. **Hyperparameters**:  
@@ -89,7 +94,11 @@ your_code = do_some_stuff
 
 3. **Training Process**:  
    - Trained the model using `ml.c4.xlarge` instance.  
-   - Deployed the trained model endpoint using `ml.m4.xlarge`.  
+   - Deployed the trained model endpoint using `ml.m4.xlarge`.
+```python 
+linear_regressor = linear.deploy(initial_instance_count = 1,
+                                          instance_type = 'ml.m4.xlarge')
+```
 
 4. **Evaluation Metrics**:
    - **Root Mean Squared Error (RMSE)**: 5090  
