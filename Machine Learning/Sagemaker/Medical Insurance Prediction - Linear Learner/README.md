@@ -73,7 +73,12 @@ Data was split into **80% training** and **20% testing**.
 ### **Linear Learner (AWS SageMaker)**
 
 1. **Data Preparation**:  
-   - Data was converted to **RecordIO format** using AWS SageMaker's utilities.  
+   - Data was converted to **RecordIO format** using AWS SageMaker's utilities.
+   ```python
+buf = io.BytesIO()  # create an in-memory byte array (buf is a buffer I will be writing to)
+smac.write_numpy_to_dense_tensor(buf, X_train, y_train.reshape(-1))
+buf.seek(0)
+
    - Training and testing datasets were uploaded to **AWS S3** for model training.
 
 2. **Hyperparameters**:  
