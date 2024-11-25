@@ -50,7 +50,8 @@ The aim of the project is to predict the health insurance premium incurred by in
 
 1. **Age vs Charges**:  
    - As age increases, the insurance charges also tend to increase.  
-   - There’s a noticeable positive correlation between `age` and `charges`.  
+   - There’s a noticeable positive correlation between `age` and `charges`.
+   - <img src="image/agevscharges.png" alt="Age VS Charges" width="500"/>  
 
 2. **Dataset Balance**:  
    - The dataset is well-balanced across categorical features such as `sex`, `region`, and `smoker`.  
@@ -58,12 +59,18 @@ The aim of the project is to predict the health insurance premium incurred by in
 
 3. **Outliers**:  
    - Outliers were detected in the `BMI` column (range: 15.3–50).  
-   - These outliers were capped using the **90th percentile quantile**.  
+   - These outliers were capped using the **90th percentile quantile**.
+   - <img src="image/bmi.png" alt="BMI" width="500"/>  
    - No significant outliers were found in `age` and `children`.  
 
 4. **Feature Distribution**:  
-   - **Age**: Most data points are distributed between 20 and 40 years.  
-   - **Children**: Majority of individuals have zero dependents.  
+   - **Age**: Most data points are distributed between 20 and 40 years.
+   - <img src="image/age.png" alt="Age" width="500"/>  
+   - **Children**: Majority of individuals have zero dependents.
+   - <img src="image/children.png" alt="Children" width="500"/>
+   - **Charges**: Most data points are distributed between 20 and 40 years.
+   - The charges decrease exponentially with 70% of the charges less than 10,000
+   - <img src="image/charges.png" alt="Charges" width="500"/>  
 
 ---
 
@@ -133,8 +140,11 @@ linear_regressor = linear.deploy(initial_instance_count = 1,
    - **Adjusted R²**: 0.827  
 
 4. **Observations**:
-   - The model showed signs of **overfitting** after 10 epochs, as the validation loss fluctuated while training loss decreased consistently.  
+   - The model showed signs of **overfitting** after 10 epochs, as the validation loss fluctuated while training loss decreased consistently.
+   - <img src="image/modelloss.png" alt="Model loss" width="500"/> 
    - To avoid overfitting, training should ideally stop at 10 epochs.
+   - The following plot shows the graph of predicted values VS true values. As we can see, it almost forms a straight line with slope 1 indicating high accuracy
+   -  <img src="image/predictionvstrue.png" alt="Predeiction VS True" width="500"/> 
 
 ---
 
