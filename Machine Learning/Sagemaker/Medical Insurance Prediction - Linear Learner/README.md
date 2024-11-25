@@ -30,6 +30,20 @@ The aim of the project is to predict the health insurance premium incurred by in
 
 ---
 
+## **Data Preprocessing**
+
+1. **Handling Missing Values**:  
+   - Null values were replaced using **KNN Imputer**, which accommodates uneven data distributions.  
+
+2. **Encoding Categorical Columns**:  
+   - `sex` and `region` were encoded using **One-Hot Encoding**.
+
+3. **Feature Scaling**:  
+   - Numerical columns were scaled to a range of 0–1 using **Standard Scaler**.  
+   - This ensures all features are on the same scale, which is crucial for both **Linear Learner** and **ANN** models.  
+
+---
+
 ## **Exploratory Data Analysis (EDA)**
 
 ### **Key Insights**
@@ -53,21 +67,8 @@ The aim of the project is to predict the health insurance premium incurred by in
 
 ---
 
-## **Data Preprocessing**
-
-1. **Handling Missing Values**:  
-   - Null values were replaced using **KNN Imputer**, which accommodates uneven data distributions.  
-
-2. **Encoding Categorical Columns**:  
-   - `sex` and `region` were encoded using **One-Hot Encoding**.
-
-3. **Feature Scaling**:  
-   - Numerical columns were scaled to a range of 0–1 using **Standard Scaler**.  
-   - This ensures all features are on the same scale, which is crucial for both **Linear Learner** and **ANN** models.  
-
----
-
 ## **Model Building**
+Data was split into **80% training** and **20% testing**.
 
 ### **Linear Learner (AWS SageMaker)**
 
@@ -160,15 +161,9 @@ The aim of the project is to predict the health insurance premium incurred by in
    - Upload the dataset to an **S3 bucket**.
    - Configure the SageMaker environment with appropriate roles and permissions.
 
-2. **Train Linear Learner**:
-   - Convert the dataset to RecordIO format.
-   - Use the provided `linear_learner.ipynb` notebook to train and deploy the model.
-
-3. **Train ANN**:
-   - Use the provided `ANN_training.ipynb` notebook to build, train, and evaluate the ANN model.
-
-4. **Evaluate and Compare**:
-   - Use the saved evaluation metrics to analyze and compare the performance of both models.
+2. **Install required libraries:  **:
+   ```bash
+   pip install pandas numpy scikit-learn imbalanced-learn
 
 ---
 
