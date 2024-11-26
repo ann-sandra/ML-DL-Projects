@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical Insurance Premium Quoter</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+h2 {
+    font-size: 30px;
+}
+h3 {
+    font-size: 23px;
+}
+
+        ul {
+            margin: 10px 20px;
+            padding: 0;
+        }
+        ul li {
+            margin: 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f2f2f2;
+        }
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+        code {
+            background-color: #eef;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+		color: black;
+        }
+        .projects {
+            margin-bottom: 20px;
+        }
+        .projects:last-child {
+            margin-bottom: 0;
+        }
+
+  .about-section {
+    text-align: center;
+    padding: 5px 0;
+  }
+  .about-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  .about-section img {
+    width: 200px; /* Adjust the size as needed */
+    height: 200px;
+    border-radius: 50%; /* Makes the image round */
+    margin-bottom: 10px;
+  }
+  .about-section p {
+    color: #333;
+  }
+
+  /* Additional CSS for Projects Section */
+.projects-section h2 {
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+
+.projects-section {
+  margin-bottom: 100px;
+}
+.card {
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds a subtle shadow around the card */
+}
+.card-img-top {
+  max-height: 250px; /* Adjust this value to fit the image properly in the card */
+  object-fit: cover; /* This makes sure the image covers the area properly */
+}
+.card-body {
+  padding: 15px;
+}
+.card-title {
+  font-size: 1.25rem;
+}
+.card-text {
+  margin-bottom: 15px;
+}
+
+/* Additional CSS for Skills Section */
+.skills-section h2 {
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+.skills-section .card {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.skills-section .card-img-top {
+  padding: 20px; /* Add padding around your images if needed */
+  background-color: #f8f9fa; /* Adjust the background color if your images have transparent areas */
+  height: 180px; /* Fixed height for consistency */
+  object-fit: contain; /* This will make sure the image is scaled properly within the container */
+}
+.skills-section .card-body {
+  padding: 15px;
+}
+.skills-section .card-title {
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+}
+.skills-section .btn-outline-primary {
+  color: #007bff;
+  border-color: #007bff;
+}
+.skills-section .btn-outline-primary:hover {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Additional CSS for Contact Section */
+.contact-section {
+  padding: 15px 0;
+  text-align: center;
+}
+.contact-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+.contact-section p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.social-icon {
+  width: 50px; /* Size of your icons */
+  margin-bottom: 5px;
+}
+/* Hover effect for icons */
+.social-icon:hover {
+  opacity: 0.7;
+}
+/* Style for links in the Contact section */
+.contact-section a {
+  color: #fff;
+  text-decoration: none; /* Removes underline from links */
+  display: inline-block; /* Allows for margin on the bottom */
+  margin-bottom: 10px;
+}
+.contact-section a:hover {
+  color: #ddd; /* Color when hovering over the link */
+}
+
+/* CSS for Sticky Navbar */
+.navbar {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Adds a shadow for depth */
+}
+
+/* Ensure padding is added to body to avoid content being hidden behind the navbar */
+body { 
+  padding-top: 56px; /* Adjust this value based on the height of your navbar */
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Style for navigation bar links */
+.navbar-nav .nav-link {
+  color: white;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f8f9fa; /* Slightly lighter white when hovering over links */
+}
+
+/* Media query for responsive navbar collapsing */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: #343a40; /* Same as navbar color for seamless look */
+  }
+}
+
+
+
+
+
+/* Hide overlay content by default */
+.project-card .overlay-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show overlay content on hover */
+.project-card:hover .overlay-content {
+  opacity: 1;
+}
+
+/* Show only the title initially */
+.project-card .card-title {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.project-card .card-text,
+.project-card .btn {
+  display: none;
+}
+
+/* Display additional content on hover */
+.project-card:hover .card-text,
+.project-card:hover .btn {
+  display: block;
+}
+
+  .responsive-img {
+    max-width: 100%;
+    height: auto;
+  }
+
+</style>
+
+</head>
+<body>
+
+<section class="about-section" style=" padding: 40px 0 10px 0; text-align: center;">
+  <h2 style="color: black; font-weight: bold;">Medical Insurance Premium Quoter</h2>
+</section>
+
+
+<p>This project leverages <strong>AWS SageMaker</strong> and <strong>S3</strong> to predict the medical insurance premium for individuals based on their personal details. The objective is to estimate health insurance costs incurred by individuals using machine learning techniques such as <strong>Linear Learner</strong> and <strong>Artificial Neural Networks (ANN)</strong>.</p>
+<hr>
+<h2 id="-problem-statement-"><strong>Problem Statement</strong></h2>
+<p>The aim of the project is to predict the health insurance premium incurred by individuals based on the following features:</p>
+<ul>
+<li><strong>Age</strong>: Age of the individual.</li>
+<li><strong>Sex</strong>: Gender of the individual (Female, Male).</li>
+<li><strong>BMI</strong>: Body Mass Index, ideally ranging between 18.5 and 24.9.</li>
+<li><strong>Children</strong>: Number of dependents covered by health insurance.</li>
+<li><strong>Smoker</strong>: Smoking habits (Yes/No).</li>
+<li><strong>Region</strong>: Geographical area in the US (Northeast, Southeast, Southwest, Northwest).</li>
+<li><strong>Charges</strong>: Individual medical costs billed by health insurance.</li>
+</ul>
+<h3 id="-dataset-"><strong>Dataset</strong></h3>
+<ul>
+<li><strong>Source</strong>: <a href="https://www.kaggle.com/mirichoi0218/insurance" style="color: black; text-decoration: underline;">Medical Insurance Dataset</a>  </li>
+<li><strong>Structure</strong>: The dataset contains 7 columns:</li>
+<li><code>age</code>, <code>sex</code>, <code>bmi</code>, <code>children</code>, <code>smoker</code>, <code>region</code>, and <code>charges</code>.</li>
+</ul>
+<h3 id="-subject-areas-"><strong>Subject Areas</strong></h3>
+<p><code>Predictive Modeling</code>, <code>AWS Sagemaker</code>, <code>Neural Network Optimization,</code>, <code>Data Preprocessing</code>, <code>Feature Engineering</code></p>
+<hr>
+<h2 id="-libraries-used-"><strong>Libraries Used</strong></h2>
+<ul>
+<li><strong>Data Manipulation</strong>: <code>pandas</code>, <code>numpy</code></li>
+<li><strong>Visualization</strong>: <code>seaborn</code>, <code>matplotlib</code></li>
+<li><strong>AWS Integration</strong>: <code>boto3</code>, <code>sagemaker</code></li>
+</ul>
+<hr>
+<h2 id="-data-preprocessing-"><strong>Data Preprocessing</strong></h2>
+<ol>
+<li><p><strong>Handling Missing Values</strong>:  </p>
+<ul>
+<li>Null values were replaced using <strong>KNN Imputer</strong>, which accommodates uneven data distributions.  </li>
+</ul>
+</li>
+<li><p><strong>Encoding Categorical Columns</strong>:  </p>
+<ul>
+<li><code>sex</code> and <code>region</code> were encoded using <strong>One-Hot Encoding</strong>.</li>
+</ul>
+</li>
+<li><p><strong>Feature Scaling</strong>:  </p>
+<ul>
+<li>Numerical columns were scaled to a range of 0–1 using <strong>Standard Scaler</strong>.  </li>
+<li>This ensures all features are on the same scale, which is crucial for both <strong>Linear Learner</strong> and <strong>ANN</strong> models.  </li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="-exploratory-data-analysis-eda-"><strong>Exploratory Data Analysis (EDA)</strong></h2>
+<h3 id="-key-insights-"><strong>Key Insights</strong></h3>
+<ol>
+<li><p><strong>Age vs Charges</strong>:  </p>
+<ul>
+<li>As age increases, the insurance charges also tend to increase.  </li>
+<li>There’s a noticeable positive correlation between <code>age</code> and <code>charges</code>.</li>
+<li><img src="https://github.com/ann-sandra/ML-DL-Projects/blob/main/Machine%20Learning/Sagemaker/Medical%20Insurance%20Prediction%20-%20Linear%20Learner/image/agevscharges.png?raw=true" alt="Age VS Charges" width="500"/>  </li>
+</ul>
+</li>
+<li><p><strong>Dataset Balance</strong>:  </p>
+<ul>
+<li>The dataset is well-balanced across categorical features such as <code>sex</code>, <code>region</code>, and <code>smoker</code>.  </li>
+<li>No oversampling or undersampling was necessary.</li>
+</ul>
+</li>
+<li><p><strong>Outliers</strong>:  </p>
+<ul>
+<li>Outliers were detected in the <code>BMI</code> column (range: 15.3–50).  </li>
+<li>These outliers were capped using the <strong>90th percentile quantile</strong>.</li>
+<li><img src="https://github.com/ann-sandra/ML-DL-Projects/blob/main/Machine%20Learning/Sagemaker/Medical%20Insurance%20Prediction%20-%20Linear%20Learner/image/bmi.png?raw=true" alt="BMI" width="500"/>  </li>
+<li>No significant outliers were found in <code>age</code> and <code>children</code>.  </li>
+</ul>
+</li>
+<li><p><strong>Feature Distribution</strong>:  </p>
+<ul>
+<li><strong>Age</strong>: Most data points are distributed between 20 and 40 years.</li>
+<li><img src="https://github.com/ann-sandra/ML-DL-Projects/blob/main/Machine%20Learning/Sagemaker/Medical%20Insurance%20Prediction%20-%20Linear%20Learner/image/age.png?raw=true" alt="Age" width="500"/>  </li>
+<li><strong>Children</strong>: Majority of individuals have zero dependents.</li>
+<li><img src="https://github.com/ann-sandra/ML-DL-Projects/blob/main/Machine%20Learning/Sagemaker/Medical%20Insurance%20Prediction%20-%20Linear%20Learner/image/children.png?raw=true" alt="Children" width="500"/></li>
+<li><strong>Charges</strong>: Most data points are distributed between 20 and 40 years.</li>
+<li>The charges decrease exponentially with 70% of the charges less than 10,000</li>
+<li><img src="https://github.com/ann-sandra/ML-DL-Projects/blob/main/Machine%20Learning/Sagemaker/Medical%20Insurance%20Prediction%20-%20Linear%20Learner/image/charges.png?raw=true" alt="Charges" width="500"/>  </li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="-model-building-"><strong>Model Building</strong></h2>
+<p>Data was split into <strong>80% training</strong> and <strong>20% testing</strong>.</p>
+<h3 id="-linear-learner-aws-sagemaker-"><strong>Linear Learner (AWS SageMaker)</strong></h3>
+<ol>
+<li><p><strong>Data Preparation</strong>:  </p>
+<ul>
+<li><p>Data was converted to <strong>RecordIO format</strong> using AWS SageMaker&#39;s utilities. </p></li>
+<pre><code class="lang-python"><span class="hljs-keyword">buf </span>= io.<span class="hljs-keyword">BytesIO() </span><span class="hljs-comment"># create an in-memory byte array </span>
+smac.write_numpy_to_dense_tensor(<span class="hljs-keyword">buf, </span>X_train, y_train.reshape(-<span class="hljs-number">1</span>))
+<span class="hljs-keyword">buf.seek(0)</span>
+</code></pre>
+
+<li><p>The linear learner image URI is used to build the model.</p></li><pre><code class="lang-python">container = get_image_uri(<span class="hljs-name">boto3</span>.Session().region_name, 'linear-learner')
+</code></pre>
+
+<li>Training and testing datasets were uploaded to <strong>AWS S3</strong> for model training.</li>
+</ul>
+</li>
+<li><p><strong>Hyperparameters</strong>:  </p>
+<ul>
+<li><strong>Feature Dimensions</strong>: 8  </li>
+<li><strong>Batch Size</strong>: 100  </li>
+<li><strong>Epochs</strong>: 100  </li>
+<li><strong>Number of Models</strong>: 32  </li>
+<li><strong>Loss Function</strong>: Absolute Loss  </li>
+</ul>
+</li>
+<li><p><strong>Training Process</strong>:  </p>
+<ul>
+<li>Trained the model using <code>ml.c4.xlarge</code> instance.  </li>
+<li><p>Deployed the trained model endpoint using <code>ml.m4.xlarge</code>.</p></li><pre><code class="lang-python"><span class="hljs-attr">linear_regressor</span> = linear.deploy(<span class="hljs-attr">initial_instance_count</span> = <span class="hljs-number">1</span>,
+                                     <span class="hljs-attr">instance_type</span> = 'ml.m4.xlarge')
+</code></pre>
+
+</ul>
+</li>
+<li><p><strong>Evaluation Metrics</strong>:</p>
+<ul>
+<li><strong>Root Mean Squared Error (RMSE)</strong>: 5090  </li>
+<li><strong>Mean Squared Error (MSE)</strong>: 25,952,588.07  </li>
+<li><strong>Mean Absolute Error (MAE)</strong>: 2824.19  </li>
+<li><strong>R² Score</strong>: 0.755  </li>
+<li><strong>Adjusted R²</strong>: 0.747  </li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="-artificial-neural-network-ann-"><strong>Artificial Neural Network (ANN)</strong></h3>
+<ol>
+<li><p><strong>Architecture</strong>:</p>
+<ul>
+<li><strong>Input Layer</strong>: 50 neurons, activation: ReLU  </li>
+<li><strong>Hidden Layer 1</strong>: 150 neurons, activation: ReLU, dropout: 0.5  </li>
+<li><strong>Hidden Layer 2</strong>: 150 neurons, activation: ReLU, dropout: 0.5  </li>
+<li><strong>Hidden Layer 3</strong>: 50 neurons, activation: Linear  </li>
+<li><strong>Output Layer</strong>: 1 neuron, activation: Linear  </li>
+</ul>
+</li>
+<li><p><strong>Hyperparameters</strong>:</p>
+<ul>
+<li><strong>Loss Function</strong>: Mean Squared Error  </li>
+<li><strong>Optimizer</strong>: Adam  </li>
+<li><strong>Epochs</strong>: 100  </li>
+<li><strong>Batch Size</strong>: 20  </li>
+<li><strong>Validation Split</strong>: 0.2  </li>
+</ul>
+</li>
+<li><p><strong>Evaluation Metrics</strong>:</p>
+<ul>
+<li><strong>RMSE</strong>: 5090.16  </li>
+<li><strong>MSE</strong>: 25,909,768.0  </li>
+<li><strong>MAE</strong>: 2854.26  </li>
+<li><strong>R² Score</strong>: 0.833  </li>
+<li><strong>Adjusted R²</strong>: 0.827  </li>
+</ul>
+</li>
+<li><p><strong>Observations</strong>:</p>
+<ul>
+<li>The model showed signs of <strong>overfitting</strong> after 10 epochs, as the validation loss fluctuated while training loss decreased consistently.</li>
+<li><img src="https://github.com/ann-sandra/ML-DL-Projects/blob/main/Machine%20Learning/Sagemaker/Medical%20Insurance%20Prediction%20-%20Linear%20Learner/image/modelloss.png?raw=true" alt="Model loss" width="500"/> </li>
+<li>To avoid overfitting, training should ideally stop at 10 epochs.</li>
+<li>The following plot shows the graph of predicted values VS true values. As we can see, it almost forms a straight line with slope 1 indicating high accuracy</li>
+<li><img src="https://github.com/ann-sandra/ML-DL-Projects/blob/main/Machine%20Learning/Sagemaker/Medical%20Insurance%20Prediction%20-%20Linear%20Learner/image/predictionvstrue.png?raw=true" alt="Predeiction VS True" width="500"/> </li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="-results-"><strong>Results</strong></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Metric</strong></th>
+<th><strong>Linear Learner</strong></th>
+<th><strong>ANN</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RMSE</td>
+<td>5090</td>
+<td>5090.16</td>
+</tr>
+<tr>
+<td>MSE</td>
+<td>25,952,588.07</td>
+<td>25,909,768.0</td>
+</tr>
+<tr>
+<td>MAE</td>
+<td>2824.19</td>
+<td>2854.26</td>
+</tr>
+<tr>
+<td>R² Score</td>
+<td>0.755</td>
+<td>0.833</td>
+</tr>
+<tr>
+<td>Adjusted R²</td>
+<td>0.747</td>
+<td>0.827</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>While both models performed similarly in terms of error, <strong>ANN</strong> achieved higher R² and Adjusted R² values, indicating it explains the variance in data better than Linear Learner.</li>
+</ul>
+<hr>
+<h2 id="-future-scope-"><strong>Future Scope</strong></h2>
+<ol>
+<li><p><strong>Hyperparameter Optimization</strong>:</p>
+<ul>
+<li>Implement advanced optimization techniques such as <strong>Bayesian Optimization</strong> or <strong>GridSearchCV</strong> to tune the models further.  </li>
+</ul>
+</li>
+<li><p><strong>Feature Engineering</strong>:</p>
+<ul>
+<li>Explore additional features such as medical history or lifestyle factors for improved predictions.  </li>
+</ul>
+</li>
+<li><p><strong>Model Comparison</strong>:</p>
+<ul>
+<li>Experiment with other models such as <strong>XGBoost</strong> or <strong>Random Forest Regressor</strong> to compare performance.  </li>
+</ul>
+</li>
+<li><p><strong>Regularization</strong>:</p>
+<ul>
+<li>Apply regularization techniques like L2 or L1 to further reduce overfitting in ANN.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="-how-to-run-"><strong>How to Run</strong></h2>
+<ol>
+<li><p><strong>Set Up AWS SageMaker</strong>:</p>
+<ul>
+<li>Upload the dataset to an <strong>S3 bucket</strong>.</li>
+<li>Configure the SageMaker environment with appropriate roles and permissions.</li>
+</ul>
+</li>
+<li><p>Install required libraries:</p><pre><code class="lang-bash">pip <span class="hljs-keyword">install </span>numpy pandas <span class="hljs-keyword">scikit-learn </span>
+</code></pre>
+</li>
+</ol>
+<hr>
+<h2 id="-conclusion-"><strong>Conclusion</strong></h2>
+<p>This project demonstrates how to predict insurance premiums using machine learning techniques on AWS SageMaker. The <strong>ANN model</strong> outperformed the <strong>Linear Learner</strong> in explaining variance in the data, making it the better choice for this use case. Both models, however, showed potential for further improvement through hyperparameter tuning and feature enhancement.</p>
+
+
+
+
+
+
+<!-- Sticky Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#home">Portfolio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#projects">Featured</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#mlprojects">ML Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html#dlprojects">DL Projects</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Bootstrap JS and dependencies (jQuery and Popper) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.5/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
