@@ -78,23 +78,26 @@ Model-based collaborative filtering involves building a model to uncover pattern
 
 #### a. **Method**: Alternating Least Squares (ALS)  
 - **Process**:  
-  Uses matrix factorization to decompose the user-item interaction matrix into two lower-dimensional matrices \( U \) (user matrix) and \( P \) (item matrix) that represent latent factors.
+ Given a rating matrix (R):
 
-- **Formula**:  
-  Given a rating matrix \( R \):  
-  \[
-  R \approx U \cdot P^T
-  \]
-  Where:  
-  - \( U \): User-feature matrix  
-  - \( P \): Item-feature matrix  
+<div align="center"> 
+    R ≈ U ⋅ P<sup>T</sup>
+</div>
 
-  The optimization problem is to minimize the following cost function:  
-  \[
-  J = \sum_{(u, i) \in R} (R_{ui} - U_u \cdot P_i^T)^2 + \lambda \left( \| U \|^2 + \| P \|^2 \right)
-  \]
-  Where:  
-  - \( \lambda \): Regularization parameter to prevent overfitting  
+Where:
+
+- U: User-feature matrix  
+- P: Item-feature matrix  
+
+The optimization problem is to minimize the following cost function:
+
+<div align="center"> 
+    J = Σ [(R<sub>ui</sub> - U<sub>u</sub> ⋅ P<sub>i</sub><sup>T</sup>)² + λ (|U|² + |P|²)]
+</div>
+
+Where:
+
+- λ: Regularization parameter to prevent overfitting.
 
 ---
 
