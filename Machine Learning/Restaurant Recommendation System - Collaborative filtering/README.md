@@ -17,18 +17,18 @@ Memory-based collaborative filtering uses raw data to calculate similarities and
 
 - **Formula**:  
 
-The similarity between two users u and v is calculated using the following formula:
+The similarity between two users \(u\) and \(v\) is calculated using the following formula:
 
 sim(u, v) = 
-    Σ(i ∈ Iuv) (r(u,i) - r̄u)(r(v,i) - r̄v)
+
+    ∑(i ∈ Iuv) (r(u,i) - r̄u)(r(v,i) - r̄v)
     --------------------------------------
-    √[Σ(i ∈ Iuv) (r(u,i) - r̄u)²] * √[Σ(i ∈ Iuv) (r(v,i) - r̄v)²]
+    √[∑(i ∈ Iuv) (r(u,i) - r̄u)²] * √[∑(i ∈ Iuv) (r(v,i) - r̄v)²]
 
 Where:
-
-- r(u,i): Rating given by user u for item i.
-- r̄u: Average rating of user u.
-- Iuv: Set of items rated by both users u and v.
+- r(u,i): Rating given by user \(u\) for item \(i\).
+- r̄u: Average rating of user \(u\).
+- Iuv: Set of items rated by both users \(u\) and \(v\).
 
 
 
