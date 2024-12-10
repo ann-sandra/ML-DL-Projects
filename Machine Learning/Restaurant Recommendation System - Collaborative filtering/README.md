@@ -21,7 +21,7 @@ Memory-based collaborative filtering uses raw data to calculate similarities and
   \[
   \text{sim}(u, v) = \frac{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)(r_{v,i} - \bar{r}_v)}{\sqrt{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)^2} \cdot \sqrt{\sum_{i \in I_{uv}} (r_{v,i} - \bar{r}_v)^2}}
   \]
-
+  Where:  
   - \( r_{u,i} \): Rating given by user \( u \) for item \( i \).  
   - \( \bar{r}_u \): Average rating of user \( u \).  
   - \( I_{uv} \): Set of items rated by both users \( u \) and \( v \).  
@@ -47,15 +47,14 @@ Memory-based collaborative filtering uses raw data to calculate similarities and
   \[
   \text{dev}(i, j) = \frac{\sum_{u \in U_{ij}} (r_{u,j} - r_{u,i})}{|U_{ij}|}
   \]
-
   Where:  
   - \( U_{ij} \): Set of users who rated both items \( i \) and \( j \).  
   - \( r_{u,j} \): Rating given by user \( u \) for item \( j \).  
 
   Predicted rating for item \( i \):  
   \[
-  \hat{r}_{u,i} = \frac{\sum_{j \in I_u} (\text{dev}(i, j) + r_{u,j}) \cdot f(i, j)}{\sum_{j \in I_u} f(i, j)}
-  \]  
+  \hat{r}_{u,i} = \frac{\sum_{j} [\text{dev}(i, j) + r_{u,j}] \cdot f(i, j)}{\sum_{j} f(i, j)}
+  \]
   Where \( f(i, j) \) is the frequency of co-occurrence between \( i \) and \( j \).  
 
 - **Functions**:  
@@ -69,22 +68,23 @@ Model-based collaborative filtering involves building a model to uncover pattern
 
 #### a. **Method**: Alternating Least Squares (ALS)  
 - **Process**:  
-  Uses matrix factorization to decompose the user-item interaction matrix into two lower-dimensional matrices \( U \) and \( P \), representing user and item latent factors, respectively.
+  Uses matrix factorization to decompose the user-item interaction matrix into two lower-dimensional matrices \( U \) (user matrix) and \( P \) (item matrix) that represent latent factors.
 
 - **Formula**:  
-  Minimize the error function:  
+  Given a rating matrix \( R \):  
   \[
-  \min_{U, P} \sum_{(u, i) \in R} (r_{u,i} - U_u^T P_i)^2 + \lambda (\|U_u\|^2 + \|P_i\|^2)
+  R \approx U \cdot P^T
   \]
   Where:  
-  - \( r_{u,i} \): Actual rating of user \( u \) for item \( i \).  
-  - \( U_u \): Latent factors for user \( u \).  
-  - \( P_i \): Latent factors for item \( i \).  
-  - \( \lambda \): Regularization parameter to prevent overfitting.  
+  - \( U \): User-feature matrix  
+  - \( P \): Item-feature matrix  
 
-- **Advantages**:  
-  - Handles sparse data effectively.  
-  - Generates reliable recommendations.  
+  The optimization problem is to minimize the following cost function:  
+  \[
+  J = \sum_{(u, i) \in R} (R_{ui} - U_u \cdot P_i^T)^2 + \lambda \left( \| U \|^2 + \| P \|^2 \right)
+  \]
+  Where:  
+  - \( \lambda \): Regularization parameter to prevent overfitting  
 
 ---
 
@@ -136,4 +136,3 @@ The primary dataset file is `rating_final.csv`, which contains the following col
 Blanca Vargas-Govea, Juan Gabriel González-Serna, Rafael Ponce-Medellín. *Effects of relevant contextual features in the performance of a restaurant recommender system.* In RecSys’11: Workshop on Context Aware Recommender Systems (CARS-2011), Chicago, IL, USA, October 23, 2011.  
 
 This project demonstrates the implementation of collaborative filtering methods, including **user-based filtering**, **item-based filtering**, and **ALS**, for building a robust restaurant recommendation system.
-
