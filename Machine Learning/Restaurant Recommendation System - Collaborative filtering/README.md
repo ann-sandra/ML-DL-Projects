@@ -47,20 +47,25 @@ Where:
   Predicts ratings by calculating the average difference between ratings of item pairs and adjusting based on user preferences.
 
 - **Formula**:  
-  For an item \( i \) and another item \( j \):  
+  For an item (i) and another item (j):
 
-  \[
-  \text{dev}(i, j) = \frac{\sum_{u \in U_{ij}} (r_{u,j} - r_{u,i})}{|U_{ij}|}
-  \]
-  Where:  
-  - \( U_{ij} \): Set of users who rated both items \( i \) and \( j \).  
-  - \( r_{u,j} \): Rating given by user \( u \) for item \( j \).  
+<div align="center"> 
+    dev(i, j) = (Σ (r<sub>u,j</sub> - r<sub>u,i</sub>)) / |U<sub>ij</sub>|
+</div>
 
-  Predicted rating for item \( i \):  
-  \[
-  \hat{r}_{u,i} = \frac{\sum_{j} [\text{dev}(i, j) + r_{u,j}] \cdot f(i, j)}{\sum_{j} f(i, j)}
-  \]
-  Where \( f(i, j) \) is the frequency of co-occurrence between \( i \) and \( j \).  
+Where:
+
+- U<sub>ij</sub>: Set of users who rated both items (i) and (j).  
+- r<sub>u,j</sub>: Rating given by user (u) for item (j).
+
+Predicted rating for item (i):
+
+<div align="center"> 
+    r̂<sub>u,i</sub> = (Σ [(dev(i, j) + r<sub>u,j</sub>) * f(i, j)]) / Σ f(i, j)
+</div>
+
+Where f(i, j) is the frequency of co-occurrence between (i) and (j).
+ 
 
 - **Functions**:  
   - `get_dev_fr(data)`: Computes average differences and frequencies between item pairs.  
