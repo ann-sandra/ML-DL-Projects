@@ -1,1 +1,139 @@
+# Restaurant Recommendation System
+
+## Overview  
+This project implements a **Restaurant Recommendation System** using **collaborative filtering** methods to predict ratings and recommend restaurants to users. Collaborative filtering is a widely used technique in recommendation engines for predicting user preferences based on similar users or items. The project explores both **memory-based** and **model-based** approaches to provide recommendations.
+
+---
+
+## Approaches Implemented  
+
+### 1. **Memory-Based Filtering**  
+Memory-based collaborative filtering uses raw data to calculate similarities and generate recommendations.  
+
+#### a. **User-Based Filtering**  
+- **Method**: Pearson Correlation  
+- **Process**:  
+  Identifies users who are similar to the target user based on their ratings and generates recommendations from their preferences.
+
+- **Formula**:  
+  The similarity between two users \( u \) and \( v \) is calculated using the Pearson correlation coefficient:  
+
+  \[
+  \text{sim}(u, v) = \frac{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)(r_{v,i} - \bar{r}_v)}{\sqrt{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)^2} \cdot \sqrt{\sum_{i \in I_{uv}} (r_{v,i} - \bar{r}_v)^2}}
+  \]
+
+  - \( r_{u,i} \): Rating given by user \( u \) for item \( i \).  
+  - \( \bar{r}_u \): Average rating of user \( u \).  
+  - \( I_{uv} \): Set of items rated by both users \( u \) and \( v \).  
+
+- **Functions**:  
+  - `pearson(user1, user2, df)`: Calculates similarity between two users.  
+  - `get_neighbours(user_id, df)`: Identifies users most similar to the target user.  
+  - `recommend(user, df, n_users=2, n_recommendations=2)`: Generates recommendations for a user based on neighbors' weighted scores.  
+
+- **Example**:  
+  The neighbors of user `U1103` are:  
+  - `('U1068', similarity = 0.79)`  
+  - `('U1028', similarity = 0.297)`  
+
+#### b. **Item-Based Filtering**  
+- **Method**: Slope-One Recommendation  
+- **Process**:  
+  Predicts ratings by calculating the average difference between ratings of item pairs and adjusting based on user preferences.
+
+- **Formula**:  
+  For an item \( i \) and another item \( j \):  
+
+  \[
+  \text{dev}(i, j) = \frac{\sum_{u \in U_{ij}} (r_{u,j} - r_{u,i})}{|U_{ij}|}
+  \]
+
+  Where:  
+  - \( U_{ij} \): Set of users who rated both items \( i \) and \( j \).  
+  - \( r_{u,j} \): Rating given by user \( u \) for item \( j \).  
+
+  Predicted rating for item \( i \):  
+  \[
+  \hat{r}_{u,i} = \frac{\sum_{j \in I_u} (\text{dev}(i, j) + r_{u,j}) \cdot f(i, j)}{\sum_{j \in I_u} f(i, j)}
+  \]  
+  Where \( f(i, j) \) is the frequency of co-occurrence between \( i \) and \( j \).  
+
+- **Functions**:  
+  - `get_dev_fr(data)`: Computes average differences and frequencies between item pairs.  
+  - `slopeone(user, data)`: Predicts ratings for unrated items using weighted differences.
+
+---
+
+### 2. **Model-Based Filtering**  
+Model-based collaborative filtering involves building a model to uncover patterns in the data.  
+
+#### a. **Method**: Alternating Least Squares (ALS)  
+- **Process**:  
+  Uses matrix factorization to decompose the user-item interaction matrix into two lower-dimensional matrices \( U \) and \( P \), representing user and item latent factors, respectively.
+
+- **Formula**:  
+  Minimize the error function:  
+  \[
+  \min_{U, P} \sum_{(u, i) \in R} (r_{u,i} - U_u^T P_i)^2 + \lambda (\|U_u\|^2 + \|P_i\|^2)
+  \]
+  Where:  
+  - \( r_{u,i} \): Actual rating of user \( u \) for item \( i \).  
+  - \( U_u \): Latent factors for user \( u \).  
+  - \( P_i \): Latent factors for item \( i \).  
+  - \( \lambda \): Regularization parameter to prevent overfitting.  
+
+- **Advantages**:  
+  - Handles sparse data effectively.  
+  - Generates reliable recommendations.  
+
+---
+
+## Data Source  
+The dataset used for this project is sourced from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).  
+
+### Dataset Structure  
+The primary dataset file is `rating_final.csv`, which contains the following columns:  
+- `userID`  
+- `placeID`  
+- `rating`  
+- `food_rating`  
+- `service_rating`  
+
+**Note**: Ratings are given on a scale of 0 to 2. Zero ratings are replaced with a very small value to distinguish them from missing ratings. Only overall ratings are used in this analysis.  
+
+---
+
+## Libraries Used  
+- **pandas**  
+- **numpy**  
+
+---
+
+## Advantages & Disadvantages of Approaches  
+
+### Memory-Based Filtering  
+**Advantages**:  
+- Simple implementation  
+- Easy to explain results  
+- Supports new user addition seamlessly  
+
+**Disadvantages**:  
+- Slow with large datasets (loads all data into memory)  
+- Sparse data may lead to missing recommendations  
+
+### Model-Based Filtering  
+**Advantages**:  
+- Performs well on sparse datasets  
+- Reduces overfitting issues  
+
+**Disadvantages**:  
+- Possible information loss due to dimensionality reduction  
+- Results can be harder to interpret  
+
+---
+
+## Citation  
+Blanca Vargas-Govea, Juan Gabriel González-Serna, Rafael Ponce-Medellín. *Effects of relevant contextual features in the performance of a restaurant recommender system.* In RecSys’11: Workshop on Context Aware Recommender Systems (CARS-2011), Chicago, IL, USA, October 23, 2011.  
+
+This project demonstrates the implementation of collaborative filtering methods, including **user-based filtering**, **item-based filtering**, and **ALS**, for building a robust restaurant recommendation system.
 
