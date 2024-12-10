@@ -16,18 +16,20 @@ Memory-based collaborative filtering uses raw data to calculate similarities and
   Identifies users who are similar to the target user based on their ratings and generates recommendations from their preferences.
 
 - **Formula**:  
-  The similarity between two users \( u \) and \( v \) is calculated using the Pearson correlation coefficient:  
 
- The similarity between two users \( u \) and \( v \) is calculated using the Pearson correlation coefficient:
+The similarity between two users \(u\) and \(v\) is calculated using the following formula:
 
-\[
-\text{sim}(u, v) = \frac{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)(r_{v,i} - \bar{r}_v)}{\sqrt{\sum_{i \in I_{uv}} (r_{u,i} - \bar{r}_u)^2} \cdot \sqrt{\sum_{i \in I_{uv}} (r_{v,i} - \bar{r}_v)^2}}
-\]
+sim(u, v) = 
 
-Where:  
-- \( r_{u,i} \): Rating given by user \( u \) for item \( i \).  
-- \( \bar{r}_u \): Average rating of user \( u \).  
-- \( I_{uv} \): Set of items rated by both users \( u \) and \( v \).
+    ∑(i ∈ Iuv) (r(u,i) - r̄u)(r(v,i) - r̄v)
+    --------------------------------------
+    √[∑(i ∈ Iuv) (r(u,i) - r̄u)²] * √[∑(i ∈ Iuv) (r(v,i) - r̄v)²]
+
+Where:
+- r(u,i): Rating given by user \(u\) for item \(i\).
+- r̄u: Average rating of user \(u\).
+- Iuv: Set of items rated by both users \(u\) and \(v\).
+
 
 - **Functions**:  
   - `pearson(user1, user2, df)`: Calculates similarity between two users.  
